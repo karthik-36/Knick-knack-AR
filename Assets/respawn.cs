@@ -36,15 +36,5 @@ public class respawn : MonoBehaviour
 
     }
 
-    // void Update()
-    // {
-    //       float dist = Vector3.Distance(player.position, transform.position);
-    //       Debug.Log("Distance to other: " + dist);
-
-    //       if(0.6 < dist){
-    //           player.transform.position = respawnPoint2.transform.position;
-    //           player2.transform.position = respawnPoint.transform.position;
-    //       }
-    // }
 
 }

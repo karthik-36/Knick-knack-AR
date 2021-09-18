@@ -10,6 +10,7 @@ public class WeatherAPIScript : MonoBehaviour
     public float lat;
     public float lon;
     public string tempType;
+    int count;
 
    
         // add your personal API key after APPID= and before &units=
@@ -18,10 +19,10 @@ public class WeatherAPIScript : MonoBehaviour
    
     void Start()
     {
-
-    // wait a couple seconds to start and then refresh every 900 seconds
+       count = 0;
+    // wait a couple seconds to start and then refresh every 10 seconds
        url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat.ToString() + "&lon=" + lon.ToString() + "&APPID=d2e95f8beafef4d5e15f1f216426076c&units=imperial";
-       InvokeRepeating("GetDataFromWeb", 2f, 900f);
+       InvokeRepeating("GetDataFromWeb", 2f, 15f);
    }
 
    void GetDataFromWeb()
@@ -47,6 +48,7 @@ public class WeatherAPIScript : MonoBehaviour
                 // print out the weather data to make sure it makes sense
                 Debug.Log(":\nReceived: " + webRequest.downloadHandler.text);
 
+                count = count + 1;
 
             	// grab the current temperature and simplify it if needed
             	int startTemp = webRequest.downloadHandler.text.IndexOf("temp",0);
@@ -61,9 +63,9 @@ public class WeatherAPIScript : MonoBehaviour
 
                 if(tempType == "C"){
                     float cTemp = ((easyTempF - 30)/2);
-                    weatherTextObject.GetComponent<TextMeshPro>().text = "" + Mathf.RoundToInt((float)cTemp).ToString() + "°C\n" + conditions;
+                    weatherTextObject.GetComponent<TextMeshPro>().text = "" + Mathf.RoundToInt((float)cTemp).ToString() + "°C\n" + conditions+ " count : " + count;
                 }else{
-                    weatherTextObject.GetComponent<TextMeshPro>().text = "" + easyTempF.ToString() + "°F\n" + conditions;
+                    weatherTextObject.GetComponent<TextMeshPro>().text = "" + easyTempF.ToString() + "°F\n" + conditions + " count : " + count;
                 }
                 
             }
