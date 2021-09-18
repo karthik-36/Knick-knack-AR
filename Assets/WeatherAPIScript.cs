@@ -63,9 +63,9 @@ public class WeatherAPIScript : MonoBehaviour
 
                 if(tempType == "C"){
                     float cTemp = ((easyTempF - 30)/2);
-                    weatherTextObject.GetComponent<TextMeshPro>().text = "" + Mathf.RoundToInt((float)cTemp).ToString() + "°C\n" + conditions+ " count : " + count;
+                    weatherTextObject.GetComponent<TextMeshPro>().text = "" + Mathf.RoundToInt((float)cTemp).ToString() + "°C\n" + conditions;
                 }else{
-                    weatherTextObject.GetComponent<TextMeshPro>().text = "" + easyTempF.ToString() + "°F\n" + conditions + " count : " + count;
+                    weatherTextObject.GetComponent<TextMeshPro>().text = "" + easyTempF.ToString() + "°F\n" + conditions;
                 }
                 
             }
